@@ -8,7 +8,7 @@
 
   angular.module('marvel')
     .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
-      $locationProvider.html5Mode(false)
+      $locationProvider.html5Mode(true)
       setStates($stateProvider, $urlRouterProvider, $locationProvider, states.base)
     })
     .run(($trace, $transitions) => {
