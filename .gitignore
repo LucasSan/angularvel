@@ -4,3 +4,4 @@ log/*.log
 !log
 dist
 newrelic_agent.log
+coverage
