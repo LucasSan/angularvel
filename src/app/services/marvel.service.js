@@ -6,8 +6,7 @@
        * @return {Object} Doc with all character recovered.
        */
       function getCharacters () {
-        const urlAddress = `?ts=1&limit=10&apikey=${Config.MARVEL.PUBLIC_KEY}&hash=${Config.MARVEL.MD5}`
-        return request(urlAddress, 'GET')
+        return request('', 'GET', { ts: 1, limit: 10, apikey: `${Config.MARVEL.PUBLIC_KEY}`, hash: `${Config.MARVEL.MD5}` })
       }
 
       /**
@@ -15,18 +14,19 @@
        * @return {Object} Doc with detail character recovered.
        */
       function getDetail (id) {
-        const urlAddress = `/${id}?ts=1&apikey=${Config.MARVEL.PUBLIC_KEY}&hash=${Config.MARVEL.MD5}`
-        return request(urlAddress, 'GET')
+        const urlAddress = `/${id}`
+        return request(urlAddress, 'GET', { ts: 1, apikey: `${Config.MARVEL.PUBLIC_KEY}`, hash: `${Config.MARVEL.MD5}` })
       }
 
       /**
        * Responsible for request.
        * @return {Object} Doc with the returned promise.
        */
-      function request (path, method) {
+      function request (path, method, querystring) {
         const options = {
           method,
-          url: `${Config.MARVEL.URL}${path}`
+          url: `${Config.MARVEL.URL}${path}`,
+          params: querystring
         }
 
         return $q((resolve, reject) => {
