@@ -3,7 +3,7 @@
     .module('marvel')
     .controller('MarvelListCtrl', List)
 
-  function List ($http, $mdToast, $state, Config, MarvelService) {
+  function List ($state, MarvelService) {
     const vm = this
 
     vm.marvelForm = {}
@@ -12,19 +12,25 @@
 
     getCharacters()
 
+    /**
+     * Get 10 characters from Marvel API.
+     * @return {Object} Doc with all character recovered.
+     */
     function getCharacters () {
       MarvelService.getCharacters()
         .then((item) => {
           vm.marvelArray = item.data.results
-          console.log('marvelArray: ', vm.marvelArray)
         })
         .catch((err) => {
           console.log('err: ', err)
         })
     }
 
-    // When the user hits the Answer button, we check the name of the hero, if it's corrects, and the user didn't use the tip, 
-    // we set the score with 1 point.
+    /**
+     * View details of a specific character.
+     * @param {Object} idMarvel
+     * @return {Object} redirect to specific controller.
+     */
     function viewDetails (idMarvel) {
       $state.go('details', { id: idMarvel })
     }
