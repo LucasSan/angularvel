@@ -5,7 +5,7 @@
        * Get 10 characters from Marvel API.
        * @return {Object} Doc with all character recovered.
        */
-      function getCharacters () {
+      function getCharacters() {
         return request('', 'GET', { ts: 1, limit: 10, apikey: `${Config.MARVEL.PUBLIC_KEY}`, hash: `${Config.MARVEL.MD5}` })
       }
 
@@ -29,12 +29,10 @@
           params: querystring
         }
 
-        return $q((resolve, reject) => {
-          $http(options)
-            .then(success => resolve(success.data), (err) => {
-              return reject(err)
-            })
-        })
+        return $http(options)
+          .then(success => { return success.data }, (err) => {
+            return err
+          })
       }
 
       return {

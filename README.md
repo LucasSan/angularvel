@@ -20,4 +20,3 @@ WEB is a static single page app repository that is responsible to access the Mar
 
 ## TODO ##
 * Inject the module and services in unit test.
-* In marvel.services.js, on request method, $http and $q returns a promise.
