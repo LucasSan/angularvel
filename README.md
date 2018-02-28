@@ -15,7 +15,7 @@ WEB is a static single page app repository that is responsible to access the Mar
 * Angular 1.6
 * JSDocs
 * Eslint
-* Jest
+* Jest (I put 60% as test coverage but can be changed in jest.config.json)
 * Gulp
 
 ## TODO ##
