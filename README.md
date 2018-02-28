@@ -20,3 +20,4 @@ WEB is a static single page app repository that is responsible to access the Mar
 
 ## TODO ##
 * Inject the module and services in unit test.
+* Remove the '#' in URL with the html5mode
