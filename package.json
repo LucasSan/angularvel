@@ -23,6 +23,7 @@
     "angular-aria": "^1.6.9",
     "angular-material": "^1.1.7",
     "angular-messages": "^1.6.9",
+    "angular-mocks": "^1.6.9",
     "angular-ui-router": "^1.0.3",
     "babel-core": "^6.26.0",
     "browser-sync": "^2.23.6",

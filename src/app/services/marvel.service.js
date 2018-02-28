@@ -6,7 +6,7 @@
        * @return {Object} Doc with all character recovered.
        */
       function getCharacters () {
-        const urlAddress = `characters?ts=1&limit=10&apikey=${Config.MARVEL.PUBLIC_KEY}&hash=${Config.MARVEL.MD5}`
+        const urlAddress = `?ts=1&limit=10&apikey=${Config.MARVEL.PUBLIC_KEY}&hash=${Config.MARVEL.MD5}`
         return request(urlAddress, 'GET')
       }
 
@@ -15,7 +15,7 @@
        * @return {Object} Doc with detail character recovered.
        */
       function getDetail (id) {
-        const urlAddress = `characters/${id}?ts=1&apikey=${Config.MARVEL.PUBLIC_KEY}&hash=${Config.MARVEL.MD5}`
+        const urlAddress = `/${id}?ts=1&apikey=${Config.MARVEL.PUBLIC_KEY}&hash=${Config.MARVEL.MD5}`
         return request(urlAddress, 'GET')
       }
 

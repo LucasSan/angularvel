@@ -17,3 +17,8 @@ WEB is a static single page app repository that is responsible to access the Mar
 * Eslint
 * Jest
 * Gulp
+
+## TODO ##
+* Inject the module and services in unit test.
+* In marvel.services.js, pass the query as querystring to request method.
+* In marvel.services.js, on request method, $http and $q returns a promise.
