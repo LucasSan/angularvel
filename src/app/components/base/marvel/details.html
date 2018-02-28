@@ -1,0 +1,20 @@
+<md-toolbar class="_md md-cyan-theme _md-toolbar-transitions">
+    <div class="md-toolbar-tools">
+        <h2>Marvel</h2>
+        <span flex="" class="flex"></span>        
+    </div>
+</md-toolbar>
+
+<div flex-xs flex-gt-xs="50" layout="column">
+    <md-card>
+      <img ng-src="{{detail.marvelArray.thumbnail.path}}/landscape_incredible.jpg" class="md-card-image">
+      <md-card-content>
+        <p>Id: {{detail.marvelArray.id}}</p>
+        <p>Name: {{detail.marvelArray.name}}</p>
+        <p>Description: {{detail.marvelArray.description}}</p>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="detail.back()">Voltar</md-button>
+      </md-card-actions>
+    </md-card>
+</div>
