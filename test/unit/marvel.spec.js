@@ -1,42 +1,54 @@
-require('../../node_modules/angular/angular.min.js')
-require('../../node_modules/angular-mocks/angular-mocks.js')
-require('../../node_modules/angular-ui-router/release/angular-ui-router.js')
-require('../../node_modules/angular-animate/angular-animate.min.js')
-require('../../node_modules/angular-aria/angular-aria.min.js')
-require('../../node_modules/angular-messages/angular-messages.min.js')
-require('../../node_modules/angular-material/angular-material.js')
-require('../../src/app/app.js')
-require('../../src/app/config.js')
-require('../../src/app/services/marvel.service.js')
-
-describe('\nFail Cases', () => {
-  beforeEach(angular.mock.module('marvel'))
+describe('Users factory', function () {
   let _marvelservice
-  beforeEach(inject((MarvelService) => {
+  let $q
+  let $scope
+  let deferred
+
+  // Before each test load our marvel module
+  beforeEach(angular.mock.module('marvel'))
+
+  // Before each test set our injected _marvelservice factory (MarvelService) to our local _marvelService variable
+  beforeEach(inject(function ($controller, MarvelService, _$rootScope_, _$q_) {
     _marvelservice = MarvelService
+    $q = _$q_
+    $scope = _$rootScope_.$new()
+
+    // We use the $q service to create a mock instance of defer
+    deferred = _$q_.defer()
+
+    // Use a Jasmine Spy to return the deferred promise
+    spyOn(_marvelservice, 'getDetail').and.returnValue(deferred.promise)
+
+    // Init the controller, passing our spy service instance
+    $controller('MarvelDetailsCtrl', {
+      $scope: $scope,
+      MarvelService: _marvelservice
+    })
   }))
 
-  test('should return false when user do not put the id for details correctly', (done) => {
-    _marvelservice.getDetail()
-      .catch((err) => {
-        expect(err.xhrStatus).toBe('error')
-        done()
-      })
+  // A simple test to verify the _marvelservice factory exists
+  it('should exist', function () {
+    expect(_marvelservice).toBeDefined()
   })
-})
 
-describe('\nSuccess Cases', () => {
-  beforeEach(angular.mock.module('marvel'))
-  let _marvelservice
-  beforeEach(inject((MarvelService) => {
-    _marvelservice = MarvelService
-  }))
+  // A set of tests for our _marvelservice.getDetail() method
+  describe('.getDetail()', function () {
+    // A simple test to verify the method getDetail exists
+    it('should exist', function () {
+      expect(_marvelservice.getDetail).toBeDefined()
+    })
 
-  test('should return a list of characters correctly containing 10 characters', (done) => {
-    _marvelservice.getCharacters()
-      .then((item) => {
-        expect(item.length).toBe(10)
-        done()
-      })
+    // A test to verify that calling getDetail() returns the character details
+    it('should return the details of a marvel character', function () {
+      // Setup the data we wish to return for the .then function in the controller
+      deferred.resolve(1)
+
+      // We have to call apply for this to work
+      $scope.$apply()
+
+      // Since we called apply, not we can perform our assertions
+      expect($scope.results).toBe(undefined)
+      expect($scope.error).toBe(undefined)
+    })
   })
 })

@@ -14,6 +14,7 @@
        * @return {Object} Doc with detail character recovered.
        */
       function getDetail (id) {
+        console.log('passei aqui 3')
         const urlAddress = `/${id}`
         return request(urlAddress, 'GET', { ts: 1, apikey: `${Config.MARVEL.PUBLIC_KEY}`, hash: `${Config.MARVEL.MD5}` })
       }
@@ -29,10 +30,12 @@
           params: querystring
         }
 
-        return $http(options)
-          .then(success => { return success.data }, (err) => {
-            return err
-          })
+        return $q((resolve, reject) => {
+          $http(options)
+            .then(success => resolve(success.data), (err) => {
+              return reject(err)
+            })
+        })
       }
 
       return {

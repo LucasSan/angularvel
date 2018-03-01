@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm i && gulp start",
-    "test": "jest --config=jest.config.json --coverage"
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,6 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "jest": "^22.4.2",
     "jsdoc": "^3.5.5"
   },
   "devDependencies": {
@@ -49,6 +48,13 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "standard": "^11.0.0"
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-browserify": "^5.2.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-spec-reporter": "0.0.32",
+    "standard": "^11.0.0",
+    "watchify": "^3.10.0"
   }
 }
