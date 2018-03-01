@@ -14,7 +14,6 @@
        * @return {Object} Doc with detail character recovered.
        */
       function getDetail (id) {
-        console.log('passei aqui 3')
         const urlAddress = `/${id}`
         return request(urlAddress, 'GET', { ts: 1, apikey: `${Config.MARVEL.PUBLIC_KEY}`, hash: `${Config.MARVEL.MD5}` })
       }
